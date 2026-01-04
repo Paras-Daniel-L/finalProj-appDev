@@ -1,0 +1,211 @@
+.login-ui{
+  background-image: linear-gradient(#2f5755, #264443);
+  display: flex;
+
+  height: 100vh;
+  width: 100vw;
+
+  overflow: hidden;
+
+  margin: 0;
+  padding: 0;
+}
+
+.login-left{
+  width: 45%;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.camera-images{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.login-right{
+  margin-left: 100px;
+  flex: 1;
+}
+
+.login-right-wel{
+  width: 85%;
+  margin-top: 50px;
+}
+
+.login-right-wel p{
+  margin-top: 0px;
+}
+
+.login-right-wel .welcome{
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 64px;
+  margin-bottom: 0px;
+  font-weight: 600;
+}
+
+.login-right-wel .notice{
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  margin: -15px 0px -10px 5px;
+  }
+
+.login-div{
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+  width: 530px;
+  position: relative;
+}
+
+.email-text{
+  display: flex;
+  justify-content: start;
+}
+
+.email-text p{
+  font-size: 24px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  margin: 0px;
+  margin-bottom: 5px;
+  margin-top: 40px;
+}
+
+.login-right-email{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
+.input-icon{
+  position: absolute;
+  padding-left: 14px;
+  top: 41%;
+  transform: translateY(-50%);
+  color: #888;
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+  color: white;
+}
+
+.password-icon{
+  position: absolute;
+  padding-left: 14px;
+  top: 91%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+  color: white;
+}
+
+.email-input{
+  width: 530px;
+  padding: 12px;
+  padding-left: 55px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  border-width: 2px;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.email-input:focus{
+  border-color: #d1d2d2;
+  box-shadow: 0 0 8px rgba(38, 68, 67, 0.6);
+}
+
+.email-input::placeholder{
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+}
+
+.login-right-rem{
+  display: flex;
+  margin-left: 40px;
+  width: 530px;
+  justify-content: space-between;
+}
+
+.left-side{
+  display: flex;
+  flex: 1;
+}
+
+.checkbox-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+}
+
+.checkbox{
+  width: 50%;
+  height: 50%;
+  border: 2px solid white;
+}
+
+.remember-div p{
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+
+.forgot-password-div{
+  flex: 1;
+  display: flex;
+  justify-content: end;
+}
+
+
+.forgot-password-div p{
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  transition: all 0.3s ease;
+  margin-right: 10px;
+}
+
+.forgot-password-div p:hover{
+  text-decoration: underline;
+}
+
+.login-right-button{
+  display: flex;
+  margin-left: 40px;
+  margin-top: 40px;
+  width: 530px;
+  justify-content: center;
+}
+
+.login-button{
+  border: none;
+  border-radius: 40px;
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  background-color: #F3F4F4;
+  padding: 5px 50px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.login-button:hover{
+  color: white;
+  background-color: #477d7a;
+}
+
+.login-button:active{
+  background-color: #000000;
+}
