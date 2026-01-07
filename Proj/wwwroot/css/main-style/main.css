@@ -1,5 +1,18 @@
+body{
+  margin: 0px;
+  padding-bottom: 500px;
+}
+
+a{
+  color: black;
+}
+
+p{
+  font-family: "Poppins", sans-serif;
+}
+
 .main-login{
-  background-image: linear-gradient(#2f5755, #264443);
+  background-image: linear-gradient(#507e7c, #264443);
   left: 145px;
   top: 0px;
   right: 0px;

@@ -95,8 +95,11 @@ C:\Users\paras\Documents\1code\html-css-course\html-proj\Proj\obj\Debug\net10.0\
 C:\Users\paras\Documents\1code\html-css-course\html-proj\Proj\obj\Debug\net10.0\Proj.pdb
 C:\Users\paras\Documents\1code\html-css-course\html-proj\Proj\obj\Debug\net10.0\Proj.genruntimeconfig.cache
 C:\Users\paras\Documents\1code\html-css-course\html-proj\Proj\obj\Debug\net10.0\ref\Proj.dll
-C:\Users\paras\Documents\1code\html-css-course\html-proj\proj\obj\Debug\net10.0\compressed\fuwb55ag8m-{0}-1whj1zwsux-1whj1zwsux.gz
-C:\Users\paras\Documents\1code\html-css-course\html-proj\proj\obj\Debug\net10.0\compressed\6p6s7bmubs-{0}-gl6ypqce5a-gl6ypqce5a.gz
-C:\Users\paras\Documents\1code\html-css-course\html-proj\proj\obj\Debug\net10.0\compressed\6ka59l2fai-{0}-cuc3i7uqhj-cuc3i7uqhj.gz
-C:\Users\paras\Documents\1code\html-css-course\html-proj\proj\obj\Debug\net10.0\compressed\urne39472s-{0}-1oic4ydlld-1oic4ydlld.gz
-C:\Users\paras\Documents\1code\html-css-course\html-proj\proj\obj\Debug\net10.0\compressed\ts6mpkwuvx-{0}-fdibmj0j7r-fdibmj0j7r.gz
+C:\Users\paras\Documents\1code\html-css-course\html-proj\proj\obj\Debug\net10.0\compressed\dcttf6zfxl-{0}-24nprv6wxo-24nprv6wxo.gz
+C:\Users\paras\Documents\1code\html-css-course\html-proj\proj\obj\Debug\net10.0\compressed\kys8o9iiod-{0}-193iovcfpn-193iovcfpn.gz
+C:\Users\paras\Documents\1code\html-css-course\html-proj\proj\obj\Debug\net10.0\compressed\a6do9ak7ra-{0}-tn2jtlu97b-tn2jtlu97b.gz
+C:\Users\paras\Documents\1code\html-css-course\html-proj\proj\obj\Debug\net10.0\compressed\mq3c6ie0lt-{0}-j4wmgkiw64-j4wmgkiw64.gz
+C:\Users\paras\Documents\1code\html-css-course\html-proj\proj\obj\Debug\net10.0\compressed\urne39472s-{0}-wtqmt2qkly-wtqmt2qkly.gz
+C:\Users\paras\Documents\1code\html-css-course\html-proj\proj\obj\Debug\net10.0\compressed\ts6mpkwuvx-{0}-5ipweew5fc-5ipweew5fc.gz
+C:\Users\paras\Documents\1code\html-css-course\html-proj\proj\obj\Debug\net10.0\compressed\9ouk8exd2m-{0}-2hdrza6hn7-2hdrza6hn7.gz
+C:\Users\paras\Documents\1code\html-css-course\html-proj\proj\obj\Debug\net10.0\compressed\sreh4mwvjs-{0}-zes87x7hsu-zes87x7hsu.gz

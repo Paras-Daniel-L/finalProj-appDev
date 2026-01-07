@@ -1,0 +1,92 @@
+body{
+  margin: 0px;
+  padding-bottom: 1000px;
+  font-family: "Poppins", sans-serif;
+}
+
+
+
+.main{
+  background-image: linear-gradient(#507e7c, #264443);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 145px;
+  font-family: "poppins", sans-serif;
+  height: 100vh;
+}
+
+.summary-div, .camera-div, .camera-img, .total-div, .notice-div, .confirm-div{
+  display: flex;
+  justify-content: center;
+}
+
+.summary-div{
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.15);
+  padding: 20px 20px;
+  border-radius: 10px;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.camera-div{
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.camera{
+  width: 75%;
+}
+
+.total-div{
+  font-weight: 500;
+  font-size: 30px;
+  column-gap: 15px;
+}
+
+.total, .amount{
+  display: flex;
+}
+
+.total{
+  justify-content: end;
+  flex: 1.40;
+}
+
+.amount{
+  justify-content: start;
+  flex: 1;
+}
+
+.notice-div{
+  font-size: 14px;
+}
+
+.confirm-btn{
+  margin-top: 10px;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: rgb(151, 56, 56);
+  border: 2px solid transparent;
+  padding: 15px 100px;
+  border-radius: 90px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.confirm-btn:hover{
+  transform: translateY(-5px);
+  box-shadow: 3px 10px 10px lightgray ;
+}
+
+.confirm-btn:active{
+  transform: translateY(5px);
+  box-shadow: 0px 0px 0px lightgray ;
+}
+
