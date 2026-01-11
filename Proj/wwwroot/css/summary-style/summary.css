@@ -20,7 +20,7 @@ body{
   height: 100vh;
 }
 
-.summary-div, .camera-div, .camera-img, .total-div, .notice-div, .confirm-div{
+.summary-div, .camera-div, .camera-img, .total-div, .notice-div{
   display: flex;
   justify-content: center;
 }
@@ -67,25 +67,45 @@ body{
   font-size: 14px;
 }
 
-.confirm-btn{
+.confirm-div{
+  display: flex;
+  justify-content: space-between;
+  column-gap: 20px;
+}
+
+.more-btn{
   margin-top: 10px;
   color: white;
   font-size: 24px;
   font-weight: bold;
   background-color: rgb(151, 56, 56);
   border: 2px solid transparent;
-  padding: 15px 100px;
+  padding: 15px 30px;
   border-radius: 90px;
   transition: all 0.3s ease;
   cursor: pointer;
+  text-decoration: none;
 }
 
-.confirm-btn:hover{
+.exit-btn{
+  margin-top: 10px;
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #e5e5e5;
+  padding: 15px 30px;
+  border-radius: 90px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.more-btn:hover, .exit-btn:hover{
   transform: translateY(-5px);
   box-shadow: 3px 10px 10px lightgray ;
 }
 
-.confirm-btn:active{
+.more-btn:active, .exit-btn:active{
   transform: translateY(5px);
   box-shadow: 0px 0px 0px lightgray ;
 }

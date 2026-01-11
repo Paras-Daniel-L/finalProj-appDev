@@ -14,7 +14,7 @@
 
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <link rel="stylesheet" href="~/css/product-style/main.css" asp-append-version="true">
+  <link rel="stylesheet" href="~/css/product-style/product.css" asp-append-version="true">
 </head>
 
 <body>
@@ -28,21 +28,27 @@
     <div class="card-title">Canon EOS</div>
     <img src="~/css/product-style/Canon EOS.png" class="card-img">
     <div class="card-price">₱1,500</div>
-    <button class="rent-btn">Rent</button>
+    <a asp-controller="Home" asp-action="form" asp-route-cameraName="Canon EOS" asp-route-price="1500" class="rent-btn" ...>
+      Rent
+    </a>
   </div>
 
   <div class="card" id="c2">
     <div class="card-title">Canon G7X</div>
     <img src="~/css/product-style/Canon G7X.png" class="card-img">
     <div class="card-price">₱800</div>
-    <button class="rent-btn">Rent</button>
+    <a asp-controller="Home" asp-action="form" asp-route-cameraName="Canon G7X" asp-route-price="800" class="rent-btn" style="text-decoration:none; display:flex; justify-content:center; align-items:center;">
+      Rent
+    </a>
   </div>
 
   <div class="card" id="c3">
     <div class="card-title">Canon IXUS</div>
     <img src="~/css/product-style/Canon IXUS.png" class="card-img">
     <div class="card-price">₱500</div>
-    <button class="rent-btn">Rent</button>
+    <a asp-controller="Home" asp-action="form" asp-route-cameraName="Canon IXUS" asp-route-price="500" class="rent-btn" style="text-decoration:none; display:flex; justify-content:center; align-items:center;">
+      Rent
+    </a>
   </div>
 
   <button class="arrow-btn right-arrow" onclick="moveRight()">
