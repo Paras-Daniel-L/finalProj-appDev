@@ -1,0 +1,177 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poller+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="~/css/registration-style/main.css" asp-append-version="true">
+
+</head>
+<body>
+  <main class="main-div">
+    <div class="side-bar">
+      <button class="back-btn">
+        <i class="arrow-left" data-lucide="arrow-left" width="30" height="35"></i>
+      </button>
+    </div>
+
+    <div class="regis-div">
+      <div class="reg-text">
+         <p>Registration</p>
+      </div>
+    </div>
+
+    <div class="info-div">
+      <div class="a-div">
+        <div class="name-div">
+          <div class="full-name">Full Name</div>
+          <div class="input-name">
+            <input class="input" type="text" placeholder="Last Name, First Name, Middle Initial" required>
+          </div>
+        </div>
+        <div class="number-div">
+          <div class="phone-number">Phone Number</div>
+          <div class="input-name">
+            <input class="input" type="number" placeholder="09*********" required>
+          </div>
+        </div>
+      </div>
+      
+      <div class="b-div">
+        <div class="address-div">
+          <div class="address">Address</div>
+          <div class="input-name">
+            <input class="input" type="text" placeholder="# Street Subdivision/Village/Purok Barangay Municipality" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-div">
+        <div class="instagram-div">
+          <div class="instagram">Instagram Username</div>
+          <div class="input-name">
+            <input class="input" type="text" placeholder="Username" required>
+          </div>
+        </div>
+
+        <div class="email-div">
+          <div class="email">Email Address</div>
+          <div class="input-name">
+            <input class="input" type="email" placeholder="Email Address" required>
+          </div>
+        </div>
+      </div>
+
+      <!--Details-->
+      <div class="d-div">
+        <div class="pickup-div">
+          <div class="pickup">Date of Pickup</div>
+          <div class="input-name">
+            <input class="input" type="date" placeholder="Username" required>
+          </div>
+        </div>
+
+        <div class="return-div">
+          <div class="return">Date of Return</div>
+          <div class="input-name">
+            <input class="input" type="date" placeholder="Email Address" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="e-div">
+        <div class="purpose-div">
+          <div class="purpose">Purpose of Renting</div>
+          <div class="input-name">
+            <input class="input" type="" placeholder="Purpose" required>
+          </div>
+        </div>
+
+        <div class="destination-div">
+          <div class="destination">Destination</div>
+          <div class="input-name">
+            <input class="input" type="text" placeholder="# Street Subdivision/Village/Purok Barangay Municipality" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-div">
+        <div class="dropoff-div">
+          <div class="dropoff">Camera drop-off location</div>
+          <div class="input-name">
+            <input class="input" type="text" placeholder="Landmark" required>
+          </div>
+        </div>
+      </div>
+
+      <!--Instagram username & Email-->
+      <div class="g-div">
+        <div class="validID-div">
+          <div class="validID">Photo of 2 Valid IDs</div>
+            <div class="upload-container">
+                <input type="file" id="file-upload" class="file-input" />
+                <label for="file-upload" class="upload-label">
+                  <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/>
+                  </svg>
+                  Add file
+                </label>
+            </div>
+        </div>
+
+        <div class="payment-div">
+          <div class="payment">Proof of Payment</div>
+            <div class="upload-container">
+                <input type="file" id="file-upload" class="file-input" />
+                <label for="file-upload" class="upload-label">
+                  <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/>
+                  </svg>
+                  Add file
+                </label>
+            </div>
+        </div>
+      </div>
+
+      <div class="h-div">
+        <div class="total-div">
+          Total Payment:
+        </div>
+        <div class="price">
+          ₱1600.00
+        </div>
+      </div>
+
+      <div class="i-div">
+        <button class="submit">
+          SUBMIT
+        </button>
+      </div>
+
+      <div class="j-div">
+        <div class="save-info">
+          <input type="checkbox" class="checkbox">
+        </div>
+        <div class="save-text">
+          Save details for future renting
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+  lucide.createIcons();
+  </script>
+</body>
+</html>

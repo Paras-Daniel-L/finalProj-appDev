@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: center;
   gap: 85px;
+  position: fixed;
 }
 
 .facebook, .instagram, .twitter{
@@ -21,4 +22,28 @@
 
 .facebook:hover, .instagram:hover, .twitter:hover{
   transform: scale(1.5);
+}
+
+.back-btn{
+  border-radius: 40px;
+  background-color: transparent;
+  border: 3px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  transition: all 0.2s ease;
+  position: absolute;
+  top: 30px;
+}
+
+.back-btn:hover{
+  transform: scale(1.1);
+}
+
+.back-btn .arrow-left{
+  color: white;
+  pointer-events: none;
 }

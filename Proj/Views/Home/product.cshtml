@@ -1,0 +1,86 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poller+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="~/css/product-style/main.css" asp-append-version="true">
+</head>
+
+<body>
+<div class="carousel-wrapper">
+  
+  <button class="arrow-btn left-arrow" onclick="moveLeft()">
+    <i data-lucide="chevron-left" width="32" height="32"></i>
+  </button>
+
+  <div class="card" id="c1">
+    <div class="card-title">Canon EOS</div>
+    <img src="~/css/product-style/Canon EOS.png" class="card-img">
+    <div class="card-price">₱1,500</div>
+    <button class="rent-btn">Rent</button>
+  </div>
+
+  <div class="card" id="c2">
+    <div class="card-title">Canon G7X</div>
+    <img src="~/css/product-style/Canon G7X.png" class="card-img">
+    <div class="card-price">₱800</div>
+    <button class="rent-btn">Rent</button>
+  </div>
+
+  <div class="card" id="c3">
+    <div class="card-title">Canon IXUS</div>
+    <img src="~/css/product-style/Canon IXUS.png" class="card-img">
+    <div class="card-price">₱500</div>
+    <button class="rent-btn">Rent</button>
+  </div>
+
+  <button class="arrow-btn right-arrow" onclick="moveRight()">
+    <i data-lucide="chevron-right" width="32" height="32"></i>
+  </button>
+
+</div>
+
+<script>
+  lucide.createIcons();
+
+  const cards = [
+    document.getElementById('c1'),
+    document.getElementById('c2'),
+    document.getElementById('c3')
+  ];
+
+  let positions = ['pos-left', 'pos-center', 'pos-right'];
+
+  function updateCards() {
+    cards.forEach((card, index) => {
+      card.classList.remove('pos-left', 'pos-center', 'pos-right');
+      card.classList.add(positions[index]);
+    });
+  }
+
+  function moveRight() {
+    positions.unshift(positions.pop());
+    updateCards();
+  }
+
+  function moveLeft() {
+    positions.push(positions.shift());
+    updateCards();
+  }
+
+  updateCards();
+</script>
+
+</body>
+</html>

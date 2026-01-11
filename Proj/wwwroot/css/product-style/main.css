@@ -1,0 +1,151 @@
+body{
+  margin: 0px;
+}
+
+a{
+  color: black;
+  text-decoration: none;
+}
+
+p{
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  margin: 0;
+  background-image: linear-gradient(#507e7c, #264443);
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* --- BIGGER WRAPPER --- */
+.carousel-wrapper {
+  position: relative;
+  width: 100%;        /* Takes full width */
+  max-width: 1400px;  /* Limits it on giant screens */
+  height: 700px;      /* Much taller stage */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- BIGGER ARROWS --- */
+.arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  border: none;
+  width: 70px;  /* Bigger buttons */
+  height: 70px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 20;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+.arrow-btn:hover { 
+  background-color: #f0f0f0; 
+  transform: translateY(-50%) scale(1.1); 
+}
+
+/* Push arrows to the edges */
+.left-arrow { left: 50px; } 
+.right-arrow { right: 50px; }
+
+/* --- BIGGER CARD --- */
+.card {
+  position: absolute;
+  background: white;
+  width: 340px;       /* Much Wider */
+  height: 500px;      /* Much Taller */
+  border-radius: 40px;
+  padding: 30px;      /* More breathing room inside */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother bounce */
+}
+
+.card-img {
+  width: 100%;
+  height: 220px;      /* Bigger Image Area */
+  object-fit: contain;
+}
+
+.card-title {
+  font-weight: 800;
+  font-size: 24px;    /* Bigger Title */
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.card-price {
+  font-size: 32px;    /* Huge Price Tag */
+  font-weight: 700;
+  color: #264443;
+  margin-bottom: -15px;
+}
+
+.rent-btn {
+  background-color: #5f9ea0;
+  color: white;
+  border: none;
+  padding: 15px 60px; /* Bigger Button */
+  border-radius: 30px;
+  font-weight: 800;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(95, 158, 160, 0.4);
+  transition: 0.3s;
+}
+
+.rent-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(95, 158, 160, 0.6);
+  background-color: #477d7a;
+}
+
+.rent-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 0px 20px rgba(95, 158, 160, 0.6);
+  background-color: black;
+}
+
+/* --- WIDER POSITIONS --- */
+.card.pos-left {
+  left: 15%;  /* Spread further left */
+  transform: translateX(-50%) scale(0.9);
+  z-index: 1;
+  opacity: 0.6;
+  pointer-events: none;
+  filter: blur(2px); /* Optional: Slight blur for depth */
+}
+
+.card.pos-center {
+  left: 50%;
+  transform: translateX(-50%) scale(1.2); /* Zoom in 120% */
+  z-index: 10;
+  opacity: 1;
+  filter: blur(0);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5); /* Deep shadow */
+}
+
+.card.pos-right {
+  left: 85%; /* Spread further right */
+  transform: translateX(-50%) scale(0.9);
+  z-index: 1;
+  opacity: 0.6;
+  pointer-events: none;
+  filter: blur(2px);
+}
