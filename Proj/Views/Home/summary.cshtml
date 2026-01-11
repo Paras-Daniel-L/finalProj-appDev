@@ -1,3 +1,5 @@
+@model Proj.Models.RentalRequest
+
 @{
     Layout = null;
 }
@@ -14,8 +16,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Poller+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="stylesheet" href="~/css/summary-style/main.css" asp-append-version="true">
-  <link rel="stylesheet" href="~/css/summary-style/sidebar.css" asp-append-version="true">
+  <link rel="stylesheet" href="~/css/summary-style/summary.css" asp-append-version="true">
+  <link rel="stylesheet" href="~/css/summary-style/summary-sidebar.css" asp-append-version="true">
 </head>
 <body>
   <main class="main">
@@ -26,25 +28,25 @@
       </div>
       <div class="total-div">
         <div class="total">Total Payment:</div>
-        <div class="amount">₱800.00</div>
+        <div class="amount">₱@Model.TotalPayment</div>
       </div>
       <div class="notice-div">
-        Please check your email for confirmation and more details.
+        Thank you @Model.FullName! Please check your email (@Model.Email) for confirmation.
       </div>
       <div class="confirm-div">
-        <button class="confirm-btn">
-          Confirm
-        </button>
+        <a asp-controller="Home" asp-action="product" class="more-btn">
+          Rent more?
+        </a>
+
+        <a asp-controller="Home" asp-action="main" class="exit-btn">
+          exit
+        </a>
       </div>
     </div>
   
   </main>
   
   <nav class="side-bar">
-    <button class="back-btn">
-      <i class="arrow-left" data-lucide="arrow-left" width="30" height="35"></i>
-    </button>
-
     <a class="instagram-button" href="https://www.instagram.com/danielcaesar/" target="_blank">
       <i data-lucide="instagram" class="instagram"></i>
     </a>

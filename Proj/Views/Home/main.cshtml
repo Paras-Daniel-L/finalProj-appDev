@@ -14,7 +14,7 @@
 
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="~/css/main-style/main.css" asp-append-version="true" />
-  <link rel="stylesheet" href="~/css/main-style/sidebar.css" asp-append-version="true" />
+  <link rel="stylesheet" href="~/css/main-style/main-sidebar.css" asp-append-version="true" />
 </head>
 <body>
   <main>
@@ -52,13 +52,14 @@
             </p>
           </div>
           <div class="right-login-button">
-            <button class="login-button">
+            <a asp-controller="Home" asp-action="login" class="login-button" style="text-decoration:none; display:inline-block; text-align:center;">
               Login
-            </button>
+            </a>
           </div>
           <div class="right-login-bottom-reg">
             <p>
-              Don't have an account? <a href="#">Register</a>
+              Don't have an account? 
+              <a asp-controller="Home" asp-action="register">Register</a>
             </p>
           </div>
         </div>

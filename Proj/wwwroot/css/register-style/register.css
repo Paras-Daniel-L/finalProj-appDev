@@ -1,0 +1,196 @@
+body{
+  margin: 0px;
+  font-family: "Poppins", sans-serif;
+}
+
+a{
+  color: black;
+  text-decoration: none;
+}
+
+p{
+  font-family: "Poppins", sans-serif;
+}
+
+.main-div{
+  background-image: linear-gradient(#507e7c, #264443);
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 200px;
+}
+
+.side-bar{
+  width: 145px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 45px;
+  position: fixed;
+  z-index: 101;
+}
+
+.back-btn{
+  border-radius: 40px;
+  background-color: transparent;
+  border: 3px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  transition: all 0.2s ease;
+  position: absolute;
+  top: 30px;
+}
+
+.back-btn:hover{
+  transform: scale(1.1);
+}
+
+.back-btn .arrow-left{
+  color: white;
+  pointer-events: none;
+}
+
+.regis-div{
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn-div{
+  position: absolute;
+  left: 40px;
+}
+
+.back-btn{
+  border-radius: 40px;
+  background-color: transparent;
+  border: 3px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  transition: all 0.2s ease;
+}
+
+.back-btn:hover{
+  transform: scale(1.1);
+}
+
+.back-btn .arrow-left{
+  color: white;
+  pointer-events: none;
+}
+
+.reg-text p{
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
+
+/* Credentials Input */
+
+.info-div{
+  margin-top: 95px;
+  width: 500px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+  align-items: center;
+}
+
+.input{
+  width: 100%;
+  padding: 12px 20px;
+  border: 0px solid #ffffff;
+  border-radius: 20px;
+  font-size: 12px;
+  color: rgb(60, 60, 60);
+  background-color: white;
+  margin-top: 15px;
+  transform: all 0.3s ease;
+  font-family: "poppins", sans-serif;
+  font-weight: 600;
+  box-sizing: border-box; 
+}
+
+.input:focus{
+  box-shadow: 0 0 8px rgba(38, 68, 67, 0.6);
+  outline: none;
+}
+
+.input::placeholder{
+  color: #c3c3c3;
+  font-family: "Poppins", sans-serif;
+}
+
+.input[type="date"] {
+  color: #c3c3c3; 
+  font-family: "Poppins", sans-serif; /* Ensures font matches */
+}
+
+.input[type="date"]:focus,
+.input[type="date"]:valid {
+  color: rgb(0, 0, 0);
+}
+
+/* Name-div */
+.a-div, .b-div, .c-div, .d-div{
+  font: normal bold 20px "Poppins", sans-serif;
+  color: white;
+  width: 100%;
+  display: flex;
+}
+
+.d-div{
+  margin-top: 15px;
+  justify-content: center;
+}
+
+.email-div, .password-div{
+  flex: 1;
+}
+
+.submit{
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  background-color: rgb(151, 56, 56);
+  border: 2px solid white;
+  padding: 15px 100px;
+  border-radius: 90px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.submit:hover{
+  transform: translateY(-5px);
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,61 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poller+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="~/css/register-style/register.css" asp-append-version="true">
+
+</head>
+<body>
+  <main class="main-div">
+    <div class="side-bar">
+      <a asp-controller="Home" asp-action="main" class="back-btn">
+        <i class="arrow-left" data-lucide="arrow-left" width="30" height="35"></i>
+      </a>
+    </div>
+
+    <div class="regis-div">
+      <div class="reg-text">
+         <p>Register</p>
+      </div>
+    </div>
+
+    <div class="info-div">
+      <div class="a-div">
+        <div class="email-div">
+          <div class="email-address">Fill Out</div>
+          <div class="input-name">
+            <form asp-controller="Home" asp-action="Register" method="post">
+              <input class="input" type="email" name="email" placeholder="Email Address" required>
+              
+              <input class="input" type="password" name="password" placeholder="Create a password" required>
+
+              <input class="input" type="password" name="confirmPassword" placeholder="Re-type the password" required>
+
+              <div class="d-div">
+                <button type="submit" class="submit">SUBMIT</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+  lucide.createIcons();
+  </script>
+</body>
+</html>
