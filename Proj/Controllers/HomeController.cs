@@ -1,14 +1,21 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Proj.Data;
 using Proj.Models;
+using System.Diagnostics;
 
 namespace Proj.Controllers;
 
 public class HomeController : Controller
 {
+    private readonly ApplicationDbContext _context;
+    public HomeController(ApplicationDbContext context)
+    {
+        _context = context;
+    }
     public IActionResult main()
     {
-        return View();
+        var cameras = _context.Cameras.ToList();
+        return View(cameras);
     }
 
     public IActionResult login()
