@@ -11,7 +11,9 @@ namespace Proj.Data
         {
         }
         public DbSet<Camera> Cameras { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Payment> Payments { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Camera>().HasData(

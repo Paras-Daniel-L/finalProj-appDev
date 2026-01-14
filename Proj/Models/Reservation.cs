@@ -9,11 +9,15 @@ namespace Proj.Models
         [Key]
         public int Id { get; set; }
         [Required]
+
+        //User
+        public int UserId { get; set; }
+        public User User { get; set; }
+
+        //Camera
         public int CameraId { get; set; }
         [ForeignKey("CameraId")]
         public virtual Camera Camera { get; set; }
-        [Required]
-        public string UserId { get; set; }
 
         [Required]
         [Display(Name = "Start Date")]
@@ -27,6 +31,10 @@ namespace Proj.Models
 
         [Column(TypeName = "decimal(18, 2)")]
         public decimal TotalPrice { get; set; }
+
+        public string PurposeOfRenting { get; set; }
+        public string Destination { get; set; }
+        public string DropOffLocation { get; set; }
 
         [Required]
         public string Status { get; set; }= "Pending";
