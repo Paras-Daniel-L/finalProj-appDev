@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Admin Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #2f5755;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 260px;
+            background-color: #274746;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            flex-shrink: 0;
+        }
+
+        .brand {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 15px;
+            color: #ccc;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+            .menu-item:hover, .menu-item.active {
+                background-color: rgba(255,255,255,0.1);
+                color: white;
+                font-weight: 500;
+            }
+
+        .menu-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .logout-link {
+            margin-top: auto;
+            color: #ccc;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 15px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+            border-radius: 8px;
+        }
+
+            .logout-link:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+                color: #ff6b6b; 
+            }
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .top-header {
+            background: white;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .page-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a2e2a;
+        }
+
+        /* CONTENT CONTAINER */
+        .content-container {
+            background-color: #2f5755;
+            padding: 30px;
+            min-height: calc(100vh - 70px);
+        }
+    </style>
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+
+    <nav class="sidebar">
+        <div class="brand">
+            Admin Panel
+            <i data-lucide="x" style="cursor:pointer"></i>
+        </div>
+
+        <a href="/Admin/Admin/Dashboard"
+           class="menu-item @(Context.Request.Path.ToString().Contains("Dashboard") ? "active" : "")">
+            <i data-lucide="layout-dashboard" class="menu-icon"></i> Dashboard
+        </a>
+
+        <a href="/Admin/Admin/Reservations"
+           class="menu-item @(Context.Request.Path.ToString().Contains("Reservations") ? "active" : "")">
+            <i data-lucide="calendar-check" class="menu-icon"></i> Reservations
+        </a>
+
+        <a href="/Admin/Admin/Equipment"
+           class="menu-item @(Context.Request.Path.ToString().Contains("Equipment") ? "active" : "")">
+            <i data-lucide="camera" class="menu-icon"></i> Equipment
+        </a>
+
+        <a href="/Admin/Admin/Customers"
+           class="menu-item @(Context.Request.Path.ToString().Contains("Customers") ? "active" : "")">
+            <i data-lucide="users" class="menu-icon"></i> Customers
+        </a>
+
+        <a href="/Admin/Admin/Payments"
+           class="menu-item @(Context.Request.Path.ToString().Contains("Payments") ? "active" : "")">
+            <i data-lucide="dollar-sign" class="menu-icon"></i> Payments
+        </a>
+
+        <a href="/Admin/Admin/Settings"
+           class="menu-item @(Context.Request.Path.ToString().Contains("Settings") ? "active" : "")">
+            <i data-lucide="settings" class="menu-icon"></i> Settings
+        </a>
+
+        <form asp-area="" asp-controller="Home" asp-action="Logout" asp-route-returnUrl="/Admin" method="post" style="margin-top: auto; width: 100%;">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="logout-link" style="background: none; border: none; width: 100%; text-align: left; cursor: pointer; display: flex; align-items: center; gap: 15px; padding: 12px 15px; color: #ccc; font-family: 'Poppins', sans-serif;">
+                <i data-lucide="log-out" style="width: 20px; height: 20px;"></i>
+                <span style="font-size: 14px;">Logout</span>
+            </button>
+        </form>
+    </nav>
+
+    <div class="main-content">
+        <header class="top-header">
+            <div class="page-title">@ViewData["Title"]</div>
+        </header>
+
+        <div class="content-container">
+            @RenderBody()
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

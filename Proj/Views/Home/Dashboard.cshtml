@@ -1,4 +1,23 @@
-﻿@model IEnumerable<Proj.Models.Camera>
+﻿@if (TempData["SuccessMessage"] != null)
+{
+    <div id="successAlert" class="glass-alert" style="background: rgba(46, 204, 113, 0.2); border: 1px solid rgba(46, 204, 113, 0.6); color: #2ecc71; position: fixed; top: 30px; right: 30px; z-index: 9999; display: flex; align-items: center; gap: 12px; padding: 15px 25px; border-radius: 12px; font-family: 'Poppins', sans-serif; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+        <i data-lucide="check-circle" style="width: 20px; height: 20px;"></i>
+        <span>@TempData["SuccessMessage"]</span>
+    </div>
+
+    <script>
+        setTimeout(function() {
+            var alertBox = document.getElementById("successAlert");
+            if (alertBox) {
+                alertBox.style.opacity = "0";
+                alertBox.style.transition = "opacity 0.5s ease-out";
+                setTimeout(() => alertBox.remove(), 500);
+            }
+        }, 4000);
+    </script>
+}
+
+@model IEnumerable<Proj.Models.Camera>
 @{
     Layout = null;
 }
@@ -8,26 +27,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camera Rental App</title>
+    <title>Dashboard - Camera Rental</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poller+One&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
     <script src="https://unpkg.com/lucide@latest"></script>
+
     <link rel="stylesheet" href="~/css/main-style/main.css" asp-append-version="true" />
+
+    <style>
+        .welcome-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            padding-right: 50px;
+        }
+
+        .welcome-title {
+            font-family: 'Poppins', serif;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .welcome-subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .logout-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #1a2e2a;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: 0.3s;
+            width: fit-content;
+        }
+
+            .logout-btn:hover {
+                background-color: #d9534f;
+            }
+    </style>
 </head>
 <body>
     <main>
         <div class="main-login">
+
             <div class="left-login">
                 <div class="left-login-top">
                     <svg width="261" height="53" viewBox="0 0 261 53" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 26.25C0 23.8346 0.307617 21.5104 0.922852 19.2773C1.56087 17.0215 2.48372 14.9251 3.69141 12.9883C4.89909 11.0514 6.38021 9.28548 8.13477 7.69043C9.88932 6.09538 11.8831 4.72819 14.1162 3.58887C16.3721 2.44954 18.8558 1.57227 21.5674 0.957031C24.279 0.31901 27.1956 0 30.3174 0C32.3226 0 34.2367 0.125326 36.0596 0.375977C37.9053 0.626628 39.637 0.979818 41.2549 1.43555C42.8727 1.86849 44.3652 2.38118 45.7324 2.97363C47.1224 3.54329 48.3757 4.14714 49.4922 4.78516L46.5527 10.5273C45.2767 9.91211 43.8184 9.39941 42.1777 8.98926C40.5599 8.55632 38.8737 8.33984 37.1191 8.33984C34.7721 8.33984 32.596 8.76139 30.5908 9.60449C28.5856 10.4476 26.8538 11.6439 25.3955 13.1934C23.9372 14.7428 22.7865 16.6227 21.9434 18.833C21.123 21.0205 20.7129 23.4814 20.7129 26.2158C20.7129 28.9274 21.123 31.3883 21.9434 33.5986C22.7637 35.7861 23.8916 37.666 25.3271 39.2383C26.7855 40.7878 28.5059 41.9954 30.4883 42.8613C32.4935 43.7044 34.6582 44.126 36.9824 44.126C38.623 44.126 40.2637 43.9323 41.9043 43.5449C43.5449 43.1348 45.0488 42.5993 46.416 41.9385L49.3555 47.6807C48.2389 48.3415 46.9971 48.9567 45.6299 49.5264C44.2627 50.096 42.7816 50.6087 41.1865 51.0645C39.5915 51.4974 37.8825 51.8392 36.0596 52.0898C34.2367 52.3405 32.3226 52.4658 30.3174 52.4658C25.6462 52.4658 21.4307 51.7822 17.6709 50.415C13.9339 49.0251 10.7552 47.1452 8.13477 44.7754C5.51432 42.3828 3.49772 39.6029 2.08496 36.4355C0.694987 33.2454 0 29.8503 0 26.25ZM53.457 40.9473C53.457 39.3066 53.8216 37.7799 54.5508 36.3672C55.2799 34.9544 56.3281 33.724 57.6953 32.6758C59.0625 31.6276 60.7145 30.8073 62.6514 30.2148C64.5882 29.5996 66.7529 29.292 69.1455 29.292C71.5381 29.292 73.7712 29.5768 75.8447 30.1465C77.9411 30.6934 79.6956 31.3997 81.1084 32.2656V31.9922C81.1084 30.3971 80.9261 29.0413 80.5615 27.9248C80.2197 26.8083 79.6842 25.8968 78.9551 25.1904C78.2259 24.484 77.2917 23.9714 76.1523 23.6523C75.0358 23.3333 73.7142 23.1738 72.1875 23.1738C70.7975 23.1738 69.362 23.2992 67.8809 23.5498C66.3997 23.7777 65.0326 24.1195 63.7793 24.5752L61.2842 19.9609C63.7679 18.9355 66.3314 18.2064 68.9746 17.7734C71.6406 17.3177 74.3864 17.0898 77.2119 17.0898C80.835 17.0898 84.0365 17.443 86.8164 18.1494C89.6191 18.833 91.9661 19.8698 93.8574 21.2598C95.7715 22.627 97.2184 24.3587 98.1982 26.4551C99.1781 28.5286 99.668 30.9668 99.668 33.7695V51.6113H82.3389L81.1768 48.3301C80.4932 48.8542 79.6842 49.3555 78.75 49.834C77.8158 50.3125 76.7904 50.734 75.6738 51.0986C74.5573 51.4632 73.3724 51.748 72.1191 51.9531C70.8659 52.1582 69.5557 52.2607 68.1885 52.2607C65.9554 52.2607 63.9274 51.9759 62.1045 51.4062C60.3044 50.8138 58.7663 50.0163 57.4902 49.0137C56.2142 48.0111 55.223 46.8262 54.5166 45.459C53.8102 44.069 53.457 42.5651 53.457 40.9473ZM72.5977 40.2295C72.5977 41.46 72.9964 42.4626 73.7939 43.2373C74.5915 43.9893 75.6624 44.3652 77.0068 44.3652C77.736 44.3652 78.4538 44.2513 79.1602 44.0234C79.8665 43.7728 80.516 43.4082 81.1084 42.9297V37.1533C79.9691 36.4697 78.7158 36.1279 77.3486 36.1279C75.7992 36.1279 74.6143 36.5153 73.7939 37.29C72.9964 38.042 72.5977 39.0218 72.5977 40.2295ZM108.931 17.7393H125.303L126.943 22.6611C129.359 20.8154 131.808 19.4255 134.292 18.4912C136.799 17.557 139.43 17.0898 142.188 17.0898C143.76 17.0898 145.218 17.3519 146.562 17.876C147.93 18.4001 149.115 19.209 150.117 20.3027C151.12 21.3965 151.906 22.8092 152.476 24.541C153.045 26.25 153.33 28.3008 153.33 30.6934V51.6113H134.771V29.5312C134.771 28.3464 134.508 27.4805 133.984 26.9336C133.46 26.3867 132.697 26.1133 131.694 26.1133C131.034 26.1133 130.304 26.25 129.507 26.5234C128.709 26.7969 128.037 27.2298 127.49 27.8223V51.6113H108.931V17.7393ZM160.371 34.6924C160.371 32.0036 160.918 29.5768 162.012 27.4121C163.128 25.2474 164.723 23.4017 166.797 21.875C168.893 20.3483 171.445 19.1748 174.453 18.3545C177.461 17.5114 180.879 17.0898 184.707 17.0898C188.535 17.0898 191.953 17.5114 194.961 18.3545C197.969 19.1748 200.509 20.3483 202.583 21.875C204.679 23.4017 206.274 25.2474 207.368 27.4121C208.485 29.5768 209.043 32.0036 209.043 34.6924C209.043 37.3584 208.485 39.7738 207.368 41.9385C206.274 44.1032 204.679 45.9489 202.583 47.4756C200.509 49.0023 197.969 50.1872 194.961 51.0303C191.953 51.8506 188.535 52.2607 184.707 52.2607C180.879 52.2607 177.461 51.8506 174.453 51.0303C171.445 50.1872 168.893 49.0023 166.797 47.4756C164.723 45.9489 163.128 44.1032 162.012 41.9385C160.918 39.7738 160.371 37.3584 160.371 34.6924ZM184.707 46.0059C185.55 46.0059 186.302 45.835 186.963 45.4932C187.624 45.1514 188.171 44.5589 188.604 43.7158C189.036 42.8499 189.367 41.6878 189.595 40.2295C189.823 38.7712 189.937 36.9255 189.937 34.6924C189.937 32.4365 189.823 30.5794 189.595 29.1211C189.367 27.6628 189.036 26.512 188.604 25.6689C188.171 24.8031 187.624 24.1992 186.963 23.8574C186.302 23.5156 185.55 23.3447 184.707 23.3447C183.841 23.3447 183.078 23.5156 182.417 23.8574C181.779 24.1992 181.243 24.8031 180.811 25.6689C180.378 26.512 180.047 27.6628 179.819 29.1211C179.591 30.5794 179.478 32.4365 179.478 34.6924C179.478 36.9255 179.591 38.7712 179.819 40.2295C180.047 41.6878 180.378 42.8499 180.811 43.7158C181.243 44.5589 181.779 45.1514 182.417 45.4932C183.078 45.835 183.841 46.0059 184.707 46.0059ZM216.392 17.7393H232.764L234.404 22.6611C236.82 20.8154 239.269 19.4255 241.753 18.4912C244.259 17.557 246.891 17.0898 249.648 17.0898C251.221 17.0898 252.679 17.3519 254.023 17.876C255.391 18.4001 256.576 19.209 257.578 20.3027C258.581 21.3965 259.367 22.8092 259.937 24.541C260.506 26.25 260.791 28.3008 260.791 30.6934V51.6113H242.231V29.5312C242.231 28.3464 241.969 27.4805 241.445 26.9336C240.921 26.3867 240.158 26.1133 239.155 26.1133C238.494 26.1133 237.765 26.25 236.968 26.5234C236.17 26.7969 235.498 27.2298 234.951 27.8223V51.6113H216.392V17.7393Z" fill="white" />
                     </svg>
-
                 </div>
                 <div class="left-login-bottom">
                     <img src="~/css/main-style/image 5.png" alt="Camera image">
@@ -48,14 +106,30 @@
                         </a>
                     </div>
                 </div>
+
                 <div class="right-login-bottom">
-                    <div class="right-login-bottom-mess">
-                        <p>Premium camera rentals with a seamless, hassle-free booking experience.</p>
+                    <div class="welcome-section">
+                        <h1 class="welcome-title">Hello, @ViewBag.UserName!</h1>
+                        <p class="welcome-subtitle">
+                            Ready for your next shoot? Scroll down to see our available gear.
+                        </p>
+
+                        @if (User?.Identity?.IsAuthenticated ?? false)
+                        {
+                            <form asp-controller="Home"
+                                  asp-action="Logout"
+                                  method="post"
+                                  asp-route-returnUrl="/"
+                                  style="display:inline;">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="logout-btn">
+                                    <i data-lucide="log-out"
+                                       style="vertical-align: middle; margin-right: 5px; width: 18px;"></i>
+                                    Logout
+                                </button>
+                            </form>
+                        }
                     </div>
-                    <div class="right-login-button" style="margin-right: 50px">
-                        <a asp-controller="Home" asp-action="login" class="login-button" style="text-decoration: none;">Login</a>
-                    </div>
-                    <p style="margin-right: 50px">Don't have an account? <a asp-controller="Home" asp-action="registration">Register</a></p>
                 </div>
             </div>
         </div>
@@ -92,7 +166,9 @@
                             </p>
 
                             <div class="hero-buttons">
-                                <a asp-controller="Rent" asp-action="Reserve" asp-route-id="@camera.Id" class="pill-btn white-btn">Rent Now</a>
+                                <a asp-controller="Rent" asp-action="Reserve" asp-route-id="@camera.Id" class="pill-btn white-btn">
+                                    Rent Now
+                                </a>
                             </div>
                         </div>
 

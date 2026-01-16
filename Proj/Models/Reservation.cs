@@ -1,43 +1,40 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Http;
 
 namespace Proj.Models
 {
     public class Reservation
     {
-        [Key]
         public int Id { get; set; }
-        [Required]
 
-        //User
-        public int UserId { get; set; }
-        public User User { get; set; }
+        [ForeignKey("User")]
+        public string UserId { get; set; }
+        public User? User { get; set; }
 
-        //Camera
         public int CameraId { get; set; }
-        [ForeignKey("CameraId")]
-        public virtual Camera Camera { get; set; }
+        public Camera? Camera { get; set; }
 
-        [Required]
-        [Display(Name = "Start Date")]
-        [DataType(DataType.Date)]
         public DateTime StartDate { get; set; }
-
-        [Required]
-        [Display(Name = "End Date")]
-        [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
-
-        [Column(TypeName = "decimal(18, 2)")]
-        public decimal TotalPrice { get; set; }
 
         public string PurposeOfRenting { get; set; }
         public string Destination { get; set; }
         public string DropOffLocation { get; set; }
 
-        [Required]
-        public string Status { get; set; }= "Pending";
+        public decimal TotalPrice { get; set; }
+        public string? Status { get; set; }
 
+        [NotMapped]
+        public IFormFile? ValidIdImage { get; set; }
+
+        [NotMapped]
+        public IFormFile? ProofOfPaymentImage { get; set; }
+
+        public string? ValidIdPath { get; set; }
+        public string? ProofOfPaymentPath { get; set; }
+
+        public ICollection<Payment>? Payments { get; set; }
     }
 }

@@ -1,33 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace Proj.Models
 {
-    public class User
+    public class User : IdentityUser
     {
-        [Key]
-        public int Id { get; set; }
-
-        [Required(ErrorMessage = "Please enter your full name.")]
+        [StringLength(100)]
         public string FullName { get; set; }
 
-        [Required]
-        [EmailAddress(ErrorMessage = "Invalid email format.")]
-        public string Email { get; set; }
-
-        [Required(ErrorMessage = "Phone number is required.")]
-        public string PhoneNumber { get; set; }
-
-        [Required(ErrorMessage = "Home address is required.")]
-        public string Address { get; set; }
-
-        public string InstagramUsername { get; set; }
-
-        [Required]
-        public string ValidIdPhotoPath { get; set; }
+        public string? Address { get; set; }
+        public string? InstagramUsername { get; set; }
+        public string? ValidIdPhotoPath { get; set; }
 
         public string Status { get; set; } = "Active";
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
+        // Navigation property
         public ICollection<Reservation> Reservations { get; set; }
     }
-   }
+}

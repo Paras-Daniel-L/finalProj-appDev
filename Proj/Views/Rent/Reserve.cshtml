@@ -1,0 +1,200 @@
+﻿@model Proj.Models.Reservation
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserve Camera</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poller+One&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="~/css/registration-style/main.css" asp-append-version="true">
+</head>
+<body>
+    <main class="main-div">
+
+        <div class="side-bar">
+            <a class="back-btn" asp-controller="Home" asp-action="Dashboard">
+                <i class="arrow-left" data-lucide="arrow-left" width="30" height="35"></i>
+            </a>
+        </div>
+
+        <div class="regis-div">
+            <div class="reg-text"><p>Complete Reservation</p></div>
+        </div>
+
+        <form asp-controller="Rent" asp-action="Reserve" method="post" enctype="multipart/form-data" class="info-div">
+            @Html.AntiForgeryToken()
+
+            <input type="hidden" asp-for="CameraId" />
+            <input type="hidden" asp-for="TotalPrice" />
+            <input type="hidden" asp-for="UserId" />
+
+            <div class="a-div">
+                <div class="name-div">
+                    <div class="full-name">Full Name</div>
+                    <div class="input-name">
+                        <input class="input" value="@ViewBag.FullName" readonly style="background-color: #e9ecef;" />
+                    </div>
+                </div>
+                <div class="number-div">
+                    <div class="phone-number">Phone Number</div>
+                    <div class="input-name">
+                        <input class="input" value="@ViewBag.Phone" readonly style="background-color: #e9ecef;" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="b-div">
+                <div class="address-div">
+                    <div class="address">Address</div>
+                    <div class="input-name">
+                        <input class="input" value="@ViewBag.Address" readonly style="background-color: #e9ecef;" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="c-div">
+                <div class="instagram-div">
+                    <div class="instagram">Instagram Username</div>
+                    <div class="input-name">
+                        <input class="input" value="@ViewBag.Instagram" readonly style="background-color: #e9ecef;" />
+                    </div>
+                </div>
+                <div class="email-div">
+                    <div class="email">Email Address</div>
+                    <div class="input-name">
+                        <input class="input" value="@ViewBag.Email" readonly style="background-color: #e9ecef;" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-div">
+                <div class="pickup-div">
+                    <div class="pickup">Date of Pickup</div>
+                    <div class="input-name">
+                        <input class="input" asp-for="StartDate" type="date" />
+                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="return-div">
+                    <div class="return">Date of Return</div>
+                    <div class="input-name">
+                        <input class="input" asp-for="EndDate" type="date" />
+                        <span asp-validation-for="EndDate" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="e-div">
+                <div class="purpose-div">
+                    <div class="purpose">Purpose of Renting</div>
+                    <div class="input-name">
+                        <input class="input" asp-for="PurposeOfRenting" placeholder="Purpose" required />
+                        <span asp-validation-for="PurposeOfRenting" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="destination-div">
+                    <div class="destination">Destination</div>
+                    <div class="input-name">
+                        <input class="input" asp-for="Destination" placeholder="Where are you going?" required />
+                        <span asp-validation-for="Destination" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="f-div">
+                <div class="dropoff-div">
+                    <div class="dropoff">Camera drop-off location</div>
+                    <div class="input-name">
+                        <input class="input" asp-for="DropOffLocation" placeholder="Landmark" required />
+                        <span asp-validation-for="DropOffLocation" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="g-div">
+                <div class="validID-div">
+                    <div class="validID">Photo of your Valid ID</div>
+                    <div class="upload-container" style="flex-direction: column; align-items: flex-start;">
+
+                        <input type="file" asp-for="ValidIdImage" class="file-input" id="id-upload" onchange="showFileChip(this, 'id-label', 'id-chip', 'id-filename')" required />
+
+                        <label for="id-upload" class="upload-label" id="id-label" style="width: 100%;">
+                            <i data-lucide="upload"></i> Add file
+                        </label>
+
+                        <div id="id-chip" style="display:none; width: 100%; align-items: center; justify-content: space-between; padding: 10px 15px; border: 1px solid #ddd; border-radius: 8px; background: white; margin-top: 5px;">
+                            <span id="id-filename" style="font-size: 13px; color: #333;">filename.jpg</span>
+                            <button type="button" onclick="clearFile('id-upload', 'id-label', 'id-chip')" style="border: none; background: none; cursor: pointer;">
+                                <i data-lucide="x" style="width: 18px;"></i>
+                            </button>
+                        </div>
+                        <span asp-validation-for="ValidIdImage" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="payment-div">
+                    <div class="payment">Proof of Payment</div>
+                    <div class="upload-container" style="flex-direction: column; align-items: flex-start;">
+
+                        <input type="file" asp-for="ProofOfPaymentImage" class="file-input" id="pay-upload" onchange="showFileChip(this, 'pay-label', 'pay-chip', 'pay-filename')" required />
+
+                        <label for="pay-upload" class="upload-label" id="pay-label" style="width: 100%;">
+                            <i data-lucide="upload"></i> Add file
+                        </label>
+
+                        <div id="pay-chip" style="display:none; width: 100%; align-items: center; justify-content: space-between; padding: 10px 15px; border: 1px solid #ddd; border-radius: 8px; background: white; margin-top: 5px;">
+                            <span id="pay-filename" style="font-size: 13px; color: #333;">filename.jpg</span>
+                            <button type="button" onclick="clearFile('pay-upload', 'pay-label', 'pay-chip')" style="border: none; background: none; cursor: pointer;">
+                                <i data-lucide="x" style="width: 18px;"></i>
+                            </button>
+                        </div>
+                        <span asp-validation-for="ProofOfPaymentImage" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="h-div">
+                <div class="total-div">Total Payment:</div>
+                <div class="price">₱@Model?.TotalPrice.ToString("N0")</div>
+            </div>
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div style="color: #721c24; background-color: #f8d7da; border-color: #f5c6cb; padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: 4px; text-align: center;">
+                    <div asp-validation-summary="ModelOnly" style="list-style: none;"></div>
+                </div>
+            }
+
+            <div class="i-div">
+                <button type="submit" class="submit">SUBMIT RESERVATION</button>
+            </div>
+
+        </form>
+    </main>
+    <script>
+        lucide.createIcons();
+
+        function showFileChip(input, labelId, chipId, filenameId) {
+            if (input.files && input.files.length > 0) {
+                var file = input.files[0];
+                document.getElementById(filenameId).textContent = file.name;
+                document.getElementById(labelId).style.display = 'none';
+                document.getElementById(chipId).style.display = 'flex';
+                lucide.createIcons();
+            }
+        }
+
+        function clearFile(inputId, labelId, chipId) {
+            var input = document.getElementById(inputId);
+            input.value = "";
+            document.getElementById(chipId).style.display = 'none';
+            document.getElementById(labelId).style.display = 'flex';
+        }
+    </script>
+</body>
+</html>

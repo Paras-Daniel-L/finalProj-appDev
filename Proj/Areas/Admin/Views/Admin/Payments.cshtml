@@ -1,0 +1,255 @@
+﻿@model IEnumerable<Proj.Models.Reservation>
+@{
+    ViewData["Title"] = "Payments";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    /* LAYOUT & HEADER */
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    .header-title {
+        color: white;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    /* SEARCH BAR */
+    .search-container {
+        position: relative;
+    }
+
+    .search-input {
+        background-color: transparent;
+        border: 2px solid white;
+        border-radius: 50px;
+        padding: 8px 20px 8px 40px;
+        color: white;
+        font-size: 13px;
+        width: 250px;
+        outline: none;
+        font-weight: 500;
+    }
+
+        .search-input::placeholder {
+            color: rgba(255,255,255,0.8);
+        }
+
+    .search-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        width: 16px;
+    }
+
+    /* CARD STYLING */
+    .payment-card {
+        background: white;
+        border-radius: 20px;
+        padding: 30px 40px;
+        min-height: 400px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .card-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 25px;
+    }
+
+    /* TABLE STYLING */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th {
+        text-align: left;
+        font-size: 11px;
+        font-weight: 800;
+        color: #1a2e2a;
+        text-transform: uppercase;
+        padding-bottom: 15px;
+    }
+
+    td {
+        padding: 20px 0;
+        font-size: 13px;
+        font-weight: 700;
+        color: #1a2e2a;
+        vertical-align: middle;
+        text-transform: uppercase;
+        border-bottom: 2px solid #000;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+    /* BADGES */
+    .status-badge {
+        padding: 6px 15px;
+        border-radius: 50px;
+        font-size: 10px;
+        font-weight: 800;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        display: inline-block;
+        min-width: 80px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .bg-pending {
+        background-color: #f1c40f;
+        color: black;
+    }
+
+    .bg-verified {
+        background-color: #27ae60;
+    }
+
+    .bg-rejected {
+        background-color: #e74c3c;
+    }
+
+    /* ACTION BUTTONS */
+    .action-row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .btn-icon {
+        border: none;
+        background: none;
+        cursor: pointer;
+        transition: 0.2s;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+
+        .btn-icon:hover {
+            transform: scale(1.1);
+        }
+
+    .icon-view {
+        color: #3498db;
+    }
+
+    .icon-check {
+        color: #27ae60;
+    }
+
+    .icon-x {
+        color: #e74c3c;
+    }
+</style>
+
+<div class="page-header">
+    <div class="header-title">Payment Management</div>
+    <form class="search-container" asp-action="Payments" method="get">
+        <i data-lucide="search" class="search-icon"></i>
+        <input type="text" name="searchString" class="search-input" placeholder="Search Payments" />
+    </form>
+</div>
+
+<div class="payment-card">
+    <div class="card-title">Recent Transactions</div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>PAYMENT ID</th>
+                <th>CUSTOMER</th>
+                <th>AMOUNT</th>
+                <th>METHOD</th>
+                <th>DATE</th>
+                <th>STATUS</th>
+                <th>ACTIONS</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                // Status Logic
+                string status = item.Status ?? "Pending";
+                string badgeClass = "bg-pending";
+
+                if (status == "Approved" || status == "Verified")
+                {
+                    status = "VERIFIED";
+                    badgeClass = "bg-verified";
+                }
+                else if (status == "Rejected")
+                {
+                    status = "REJECTED";
+                    badgeClass = "bg-rejected";
+                }
+
+                // Check for Proof of Payment to confirm method
+                string method = !string.IsNullOrEmpty(item.ProofOfPaymentPath) ? "MANUAL UPLOAD" : "PENDING";
+
+                <tr>
+                    <td>PAY-@item.Id.ToString("D4")</td>
+                    <td>@item.User?.FullName</td>
+                    <td>₱@item.TotalPrice.ToString("N0")</td>
+                    <td>@method</td>
+                    <td>@item.StartDate.ToString("yyyy-MM-dd")</td>
+
+                    <td>
+                        <span class="status-badge @badgeClass">@status</span>
+                    </td>
+
+                    <td>
+                        <div class="action-row">
+                            @if (!string.IsNullOrEmpty(item.ProofOfPaymentPath))
+                            {
+                                <a href="~/images/uploads/@item.ProofOfPaymentPath" target="_blank" class="btn-icon icon-view" title="View Proof">
+                                    <i data-lucide="eye" width="18"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <span class="btn-icon" style="opacity: 0.3; cursor: not-allowed;"><i data-lucide="eye-off" width="18"></i></span>
+                            }
+
+                            @if (item.Status == "Pending")
+                            {
+                                <form asp-action="VerifyPayment" method="post" style="display:inline;">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <button type="submit" class="btn-icon icon-check" title="Verify Payment">
+                                        <i data-lucide="check-circle-2" width="18"></i>
+                                    </button>
+                                </form>
+
+                                <form asp-action="UpdateStatus" method="post" style="display:inline;">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <input type="hidden" name="status" value="Rejected" />
+                                    <button type="submit" class="btn-icon icon-x" title="Reject Payment">
+                                        <i data-lucide="x-circle" width="18"></i>
+                                    </button>
+                                </form>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    lucide.createIcons();
+</script>
